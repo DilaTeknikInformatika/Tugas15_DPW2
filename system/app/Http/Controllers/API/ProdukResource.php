@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Models\Produk;
 use Illuminate\Http\Request;
 
 class ProdukResource extends Controller
@@ -18,7 +19,7 @@ class ProdukResource extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store()
     {
         if(request('nama') && request('harga') && request('stok') && request('deskripsi')){
         
@@ -65,7 +66,7 @@ class ProdukResource extends Controller
 
     
     
-    public function update(Request $request, $id)
+    public function update($id)
     {
         $produk = Produk::find($id);
         if($produk){

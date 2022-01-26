@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\UserDetail;
-use App\Models\Produk;
+
 class User extends Authenticatable
 {
     protected $table = 'user';
@@ -23,7 +23,7 @@ class User extends Authenticatable
     }
 
     function getJenisKelaminStringAttribute(){
-        return ($this->jenis_kelamin == 1) ? "Laki-laki" : "Perempuan";
+        return ($this->jenis_kelamin == 1) ? "Perempuan" : "Laki-Laki";
     }
 
     function setPasswordAttribute($value){

@@ -1,7 +1,6 @@
 <?php 
 
 namespace App\Http\Controllers;
-use App\Http\Requests\UserStoreRequest;
 use App\Models\User;
 use App\Models\UserDetail;
 
@@ -14,17 +13,13 @@ class UserController extends Controller{
 	function create(){
 		return view('admin.user.create');
 	}
-	function store(UserStoreRequest $request){
+	function store(){
 		$user = new User;
 		$user['nama'] = request('nama');
 		$user['username'] = request('username');
 		$user['email'] = request('email');
 		$user['password'] = request('password');
-		if(request('jenis_kelamin') == 'laki-laki') {
-		$user->jenis_kelamin = "1";
-    	} else {
-      	$user->jenis_kelamin = "2";
-    	};
+		$user['jenis_kelamin'] = 1;
 		$user->save();
 
 		$userDetail = new UserDetail;
@@ -35,12 +30,6 @@ class UserController extends Controller{
 		return redirect('admin/user')->with('success','Data Berhasil Ditambahkan');
 	}
 	function show(User $user){
-
-		$loggedUser = request()->user();
-		if($loggedUser->id != $user->id){
-		  return abort(404);
-		}
-		
 		$data['user'] = $user;
 		return view('admin.user.show', $data);
 	}

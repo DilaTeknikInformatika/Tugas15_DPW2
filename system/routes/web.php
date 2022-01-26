@@ -43,22 +43,10 @@ Route::get('beranda/{status}', [HomeController::class, 'Showberanda']);
 
 
 // login as Pengguna
-Route::prefix('admin')->middleware('auth:pengguna')->group(function(){
-    Route::resource('produk', ProdukController::class);
-    Route::resource('user', UserController::class);
-    Route::post('produk/filter', [ProdukController::class, 'filter']);
-});
 
-// login as Admin
-Route::prefix('admin')->middleware('auth:admin')->group(function(){
-    Route::resource('produk', ProdukController::class);
-    Route::resource('user', UserController::class);
-    Route::post('produk/filter', [ProdukController::class, 'filter']);
-});
-
-Route::get('login', [AuthController::class, 'showlogin']) -> name('login');;
-Route::post('login', [AuthController::class, 'loginProcess'] );
-Route::get('logout', [AuthController::class, 'logout'] );
+Route::get('login', [AuthController::class, 'showlogin']) -> name('login');
+Route::post('login', [AuthController::class, 'loginProcess']);
+Route::get('logout', [AuthController::class, 'logout']);
 Route::get('register', [AuthController::class, 'register']);
 Route::get('forgot', [AuthController::class, 'forgot']);
 
@@ -72,13 +60,15 @@ Route::get('products', [ClientController::class, 'showproducts'] );
 Route::get('about', [ClientController::class, 'showabout'] );
 Route::get('client', [ClientController::class, 'showclient'] );
 Route::get('contact', [ClientController::class, 'showcontact'] );
-Route::post('shop/filter', [ClientController::class, 'filter']);
-Route::post('shop/filter2', [ClientController::class, 'filter2']);
-Route::get('fruits/{produk}', [ClientController::class, 'showproducts']);
+Route::get('checkout', [ClientController::class, 'checkout'] );
+Route::post('products/filter', [ClientController::class, 'filter']);
+Route::post('products/filter2', [ClientController::class, 'filter2']);
+Route::get('detail/{produk}', [ClientController::class, 'showdetail']);
+
 
 //alamat
 Route::get('alamat',[HomeController::class, 'showAlamat'] );
 
 // setting control
-Route::get('setting', [SettingController::class, 'index']);
-Route::post('setting', [SettingController::class, 'store']);
+
+Route::get('cart', [ClientController::class, 'cart']);

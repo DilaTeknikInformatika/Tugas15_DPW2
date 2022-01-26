@@ -10,15 +10,22 @@ class indexController extends Controller
 	    return view('about');
 	}
 
-	function showwatch(){
-
-		return view('watch');
-
-	}
-
 	function showcontact(){
 
 		return view('contact');
+
+	}
+
+
+	function showproducts(){
+
+		return view('products');
+
+	}
+
+	function showclient(){
+
+		return view('client');
 
 	}
 

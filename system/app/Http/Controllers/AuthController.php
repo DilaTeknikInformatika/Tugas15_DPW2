@@ -1,10 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Admin;
-use App\Models\Pengguna;
-use Illuminate\Support\Facades\Auth;
 
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
@@ -14,6 +12,12 @@ class AuthController extends Controller
     }
 
     function loginProcess(){
+
+      if (Auth::attempt(['email' => request('email'), 'password' => request('password')])){
+        return redirect('admin/beranda')->with('success', 'login berhasil');
+      }else{
+        return back()->with('danger','login anda gagal');
+      }
         /*
         if(Auth::attempt(['email' => request('email'), 'password' => request('password')])){
         $user = Auth::user();
@@ -23,6 +27,7 @@ class AuthController extends Controller
 			return back()->with('danger', 'Login gagal, Silahkan cek email dan password anda');
 		}
 */
+/*
     $email = request('email');
     $user = Admin::where('email', $email)->first();
     if ($user) {
@@ -45,14 +50,12 @@ class AuthController extends Controller
         return back()->with('danger', 'login gagal, silakan cek pasword dan email anda');
       }
     }
-    
+    */
     }
 
     function logout(){
-        Auth::logout();
-        Auth::guard('admin')->logout();
-        Auth::guard('pengguna')->logout();
-		return redirect('login');
+      Auth::logout();
+      return redirect('login');
     }
 
     function register(){

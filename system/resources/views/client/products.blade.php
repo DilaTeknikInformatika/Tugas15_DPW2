@@ -37,7 +37,7 @@
       <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
    </head>
    <body>
-     <!-- header section strats -->
+ <!-- header section strats -->
    @include('client.section.header')
   <!-- end header section -->
 
@@ -74,7 +74,7 @@
                     </div>
                     <div class="card-body">
 
-                        <form action="{{ url('shop/filter') }}" method="POST">
+                        <form action="{{ url('products/filter') }}" method="POST">
                             @csrf
                             <div class="form-group">
                               <div class="row">
@@ -88,16 +88,16 @@
                     </div>
 
                     <div class="card-body">
-                        <form action="{{ url('shop/filter2') }}" method="POST">
+                        <form action="{{ url('product/filter2') }}" method="POST">
                             @csrf
-                                <div class="col-md-5">
+                                <div class="col-md-2">
                                     <div class="row">
                                         <label for="" class="control-label">Harga Min</label>
                                         <input type="text" class="form-control" name="harga_min"
                                             value="{{ $harga_min ?? '' }}">
                                     </div>
                                 </div>
-                                <div class="col-md-5">
+                                <div class="col-md-2">
                                     <div class="row">
                                         <label for="" class="control-label">Harga Max</label>
                                         <input type="text" class="form-control" name="harga_max"
@@ -123,7 +123,7 @@
                                 <a class="h3 text-dark text-decoration-none mr-3" href="#">Various</a>
                             </li>
                             <li class="list-inline-item">
-                                <a class="h3 text-dark text-decoration-none" href="#">Watch</a>
+                                <a class="h3 text-dark text-decoration-none" href="#">Make up</a>
                             </li>
                         </ul>
                     </div>
@@ -148,7 +148,7 @@
                             src="{{url('public', $produk->foto) }}">
                       </div>
                       <div class="card-body">
-                        <a href="{{ url('/fruits', $produk->id) }}"
+                        <a href="{{ url('/detail', $produk->id) }}"
                             class="h3 text-decoration-none">{{ $produk->nama }}</a>       
                           <hr>
                           <p>stok :{{ $produk->stok }}</p>                     

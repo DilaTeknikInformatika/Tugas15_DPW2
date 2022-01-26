@@ -56,12 +56,7 @@
                                             <input type="password" class="form-control" id="inputPassword" placeholder="Password" name="password">
 
                                         </div>
-                                        <div class="input-group mb-3">
-                                            <select name="login_as" class="form-control">
-                                                <option value="1">Admin</option>
-                                                <option value="2">Pengguna</option>
-                                            </select>
-                                        </div>
+
                                         <div class="forgot">
                                             <a href="reset.html">Forgot password?</a>
                                         </div>

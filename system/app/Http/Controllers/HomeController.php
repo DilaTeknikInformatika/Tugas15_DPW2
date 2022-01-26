@@ -6,7 +6,7 @@ class HomeController extends Controller{
     function showBeranda(){
         return view('admin.beranda');
     }
-
+/*
     function showProduk(){
         return view('admin.produk.index');
     }
@@ -33,10 +33,10 @@ class HomeController extends Controller{
       echo "Harga Min adalah $hargaMin <br>";
       echo "Harga Max adalah $hargaMax <br>";
       }
-    
-      public function showAlamat()
+    */
+  public function showAlamat()
   {
     $data['list_provinsi'] = Provinsi::all();
-    return view('admin.alamat', $data);
+    return view('client.alamat', $data);
   }
 }
